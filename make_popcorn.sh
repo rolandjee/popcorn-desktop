@@ -24,7 +24,7 @@ else
 fi
 
 clone_command() {
-    if git clone "$clone_url" "$dir"; then
+    if git clone -- "$clone_url" "$dir"; then
         echo "Cloned Popcorn Time successfully"
     else
         echo "Popcorn Time encountered an error and could not be cloned"
@@ -34,7 +34,7 @@ clone_command() {
 
 git_dir="$(git rev-parse --git-dir 2>/dev/null)" || git_dir=".git"
 if [ -e "$git_dir"/config ]; then
-    dat="$(grep url "$git_dir"/config)"
+    dat="$(grep -- url "$git_dir"/config)"
     case "$dat" in *popcorn*)
         echo "You appear to be inside of a Popcorn Time repository already, not cloning"
         clone_repo="False"
@@ -99,7 +99,7 @@ if [ "$clone_repo" = "True" ]; then
             echo "Removing old directory"
             if [ "$dir" != "." ] || [ "$dir" != "$PWD" ]; then
                 echo "Cleaning up from inside the destination directory"
-                rm -rf "$dir"
+                rm -rf -- "$dir"
             fi
             clone_command
         else
@@ -111,7 +111,9 @@ fi
 if [ -z "$dir" ]; then
     dir="."
 fi
-cd "$dir"
+
+cd -- "$dir"
+
 echo "Switched to $PWD"
 
 if [ "$rd_dep" = "yes" ]; then
