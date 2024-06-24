@@ -32,9 +32,10 @@ clone_command() {
     fi
 }
 
+git_dir="$(git rev-parse --git-dir)"
 if [ "$(git rev-parse --is-inside-work-tree)" = "true" ] &&
-   [ -e ".git/config" ]; then
-    dat="$(grep url .git/config)"
+  [ -e "$git_dir"/config ]; then
+    dat="$(grep url "$git_dir"/config)"
     case "$dat" in *popcorn*)
         echo "You appear to be inside of a Popcorn Time repository already, not cloning"
         clone_repo="False"
