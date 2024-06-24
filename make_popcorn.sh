@@ -32,7 +32,7 @@ clone_command() {
     fi
 }
 
-git_dir="$(git rev-parse --git-dir 2>/dev/null)"
+git_dir="$(git rev-parse --git-dir 2>/dev/null)" || git_dir=".git"
 if [ -e "$git_dir"/config ]; then
     dat="$(grep url "$git_dir"/config)"
     case "$dat" in *popcorn*)
