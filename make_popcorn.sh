@@ -38,6 +38,7 @@ if [ -e "$git_dir"/config ]; then
     case "$dat" in *popcorn*)
         echo "You appear to be inside of a Popcorn Time repository already, not cloning"
         clone_repo="False"
+        cd -- "$(dirname $git_dir)" # otherwise yarn build might fail
         ;;
     *)
         try="True"
