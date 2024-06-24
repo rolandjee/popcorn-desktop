@@ -32,8 +32,8 @@ clone_command() {
     fi
 }
 
-git_dir="$(git rev-parse --git-dir)"
-if [ "$(git rev-parse --is-inside-work-tree)" = "true" ] &&
+git_dir="$(git rev-parse --git-dir 2>/dev/null)"
+if [ "$(git rev-parse --is-inside-work-tree 2>/dev/null)" = "true" ] &&
   [ -e "$git_dir"/config ]; then
     dat="$(grep url "$git_dir"/config)"
     case "$dat" in *popcorn*)
