@@ -101,7 +101,8 @@ if [ "$clone_repo" = "True" ]; then
             if [ "$dir" != "." ] || [ "$dir" != "$PWD" ]; then
                 echo "Cleaning up from inside the destination directory"
                 if ! rm -rf -- "$dir"; then
-                 exit 1
+                 echo "Cannot delete the directory"
+                 exit 4
                 fi
             fi
             clone_command
