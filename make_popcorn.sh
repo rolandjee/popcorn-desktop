@@ -100,7 +100,9 @@ if [ "$clone_repo" = "True" ]; then
             echo "Removing old directory"
             if [ "$dir" != "." ] || [ "$dir" != "$PWD" ]; then
                 echo "Cleaning up from inside the destination directory"
-                rm -rf -- "$dir"
+                if ! rm -rf -- "$dir"; then
+                 exit 1
+                fi
             fi
             clone_command
         else
