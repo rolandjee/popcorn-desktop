@@ -120,7 +120,7 @@ Optionally, you may simply run `./make_popcorn.sh` if you are on a linux or mac 
 
 Full instructions & troubleshooting tips can be found in the [Contributing Guide](docs/Contributing.md#contributing-to-popcorn-time).
 
-#### Building redistribuable packages/installers:
+#### Building redistributable packages/installers:
 
 1. `yarn config set yarn-offline-mirror ./node_modules/`
 2. `yarn install --ignore-engines`
@@ -129,7 +129,7 @@ Full instructions & troubleshooting tips can be found in the [Contributing Guide
 `<platform>` can be one or more of the folowing values (separated by a comma `,`):
 * `win64`, `win32`, `linux64`, `linux32`, `osx64`, `all`
 
-Redistribuable packages are saved into `build/` subfolder.
+Redistributable packages are saved into `build/` subfolder.
 
 
 ## Getting Involved
